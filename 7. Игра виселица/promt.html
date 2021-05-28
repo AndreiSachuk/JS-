@@ -14,7 +14,9 @@
             "программа",
             "макака",
             "прекрасный",
-            "оладушек"
+            "оладушек",
+            "мыло",
+            "перекресток"
             ];//массив исходных слов
 
             var word = words[Math.floor(Math.random() * words.length)];//выбор случайного числа
@@ -24,24 +26,31 @@
                 answerArray[i] = "_"; 
             }
             var remainingLetters = word.length; //переменная, в которой хранится количесвто оствавшихся букв. изначально равна длине заагаданного слова
+            var mistakes = 10;
 
-            while (remainingLetters > 0) { // основной цикл программы
-                alert(answerArray.join(" "));
+            while (remainingLetters > 0 && mistakes > 0) { // основной цикл программы
+                alert(answerArray.join(" ") + " попыток осталось " + mistakes);
+
                 var guess = prompt("Угадайте букву или нажмите Отмена для выхода из игры.");
+                guess = guess.toLowerCase();
                 if (guess === null) {
                     break;
                 } else if (guess.length !== 1) {
                     alert("Пожалуйста, введите только одну букву.");
-                } else {
+                } else {               
+                    mistakes--;
                     for (var j = 0; j < word.length; j++) {
-                        if (word[j] === guess) {
+                        if (word[j] === guess && answerArray[j] === "_") {
                             answerArray[j] = guess;
                             remainingLetters--;
                         }
                     }
                 }
             }   
-            alert(answerArray.join(" "));
+            if (mistakes===0){
+                alert("К сожалению ты проиграл, попробуй еще раз. Было загадано слово - " + word);
+            } else {
+                alert(answerArray.join(" "));
             alert("Отлично! Было загадано слово " + word);
 
             var likeGame = confirm("Тебе поднравилась игра?");//выводит опросник с ОК/отмена(да/нет)
@@ -50,6 +59,8 @@
             } else {
                 alert("Будем еще стараться сделать игру лучше");
             }
+            }
+            
 
         </script>
 </body>
