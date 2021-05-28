@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор случайных строк</title>
+</head>
+<body>
+    <h1>Генератор случайных строк</h1>
+    <p>Зайди в консоль (F12). Напишите генератор случайных строк.</p>
+        <script>
+            var alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            var randomString = "";
+
+            while (randomString.length < 20){
+                randomString += alphabet[Math.floor(Math.random() *alphabet.length)];
+            }
+            console.log(randomString);
+        </script>
+</body>
+</html>
