@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Игра "Виселица"</title>
+</head>
+<body>
+    <h1>Игра "Виселица"</h1>
+    <p>Зайди в консоль (F12).</p>
+        <script>
+            var name = prompt("Как вас зовут?");//выводи окно с запросом
+            alert("Привет, " + name);
+            var words = [
+            "программа",
+            "макака",
+            "прекрасный",
+            "оладушек"
+            ];//массив исходных слов
+
+            var word = words[Math.floor(Math.random() * words.length)];//выбор случайного числа
+
+            var answerArray = []; //создаем пустро массив для ответа
+            for (var i = 0; i < word.length; i++) {  //заполняем его подчеркиваниями
+                answerArray[i] = "_"; 
+            }
+            var remainingLetters = word.length; //переменная, в которой хранится количесвто оствавшихся букв. изначально равна длине заагаданного слова
+
+            while (remainingLetters > 0) { // основной цикл программы
+                alert(answerArray.join(" "));
+                var guess = prompt("Угадайте букву или нажмите Отмена для выхода из игры.");
+                if (guess === null) {
+                    break;
+                } else if (guess.length !== 1) {
+                    alert("Пожалуйста, введите только одну букву.");
+                } else {
+                    for (var j = 0; j < word.length; j++) {
+                        if (word[j] === guess) {
+                            answerArray[j] = guess;
+                            remainingLetters--;
+                        }
+                    }
+                }
+            }   
+            alert(answerArray.join(" "));
+            alert("Отлично! Было загадано слово " + word);
+
+            var likeGame = confirm("Тебе поднравилась игра?");//выводит опросник с ОК/отмена(да/нет)
+            if (likeGame) {
+                alert("Cпасибо");
+            } else {
+                alert("Будем еще стараться сделать игру лучше");
+            }
+
+        </script>
+</body>
+</html>
