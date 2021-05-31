@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>New item jQuery</title>
+    </head>
+
+    <body>
+        <h1 id="main-heading">3. Создание новых элементов через jQuery</h1>   
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       
+        <script>
+            $("body").append("<p>This is new pharagraf</p>");
+            /*Первая часть этой команды вызывает функцию $ со строкой селектора "body", чтобы найти тело (содержимое) нашего HTML-
+            документа. Поиск не обязательно должен происходить по id — код $("body") ищет элемент body, и точно так же мы можем вызвать
+            $("p") для поиска всех элементов p.*/
+
+            for (var i = 0; i < 3; i++) {
+                var hobby = prompt("Назови одно из своих хобби! Под номером "+ (i+1));
+                $("body").append("<p>" + hobby + "</p>");
+            }
+         
+        </script>
+    </body>
+</html>
