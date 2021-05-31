@@ -1,0 +1,29 @@
+<!-- 1. Как с помощью fadeOut и fadeIn сделать так, чтобы заголовок мигнул пять раз с интервалом в секунду?      Как сделать это в цикле for? 
+     2. А теперь измените цикл, чтобы заголовок появлялся и исчезал в первый раз за секунду, потом за две, потом за три и т. д.-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The best friend</title>
+    </head>
+
+    <body>
+        <h1 id="main-heading">Привет, мир!</h1>  
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            /*for (i = 0; i < 5; i++){   //1.
+                $("h1").fadeIn(500);
+                $("h1").fadeOut(500);
+            }*/
+
+            for (i = 0; i < 5; i++){   //2.
+                $("h1").fadeIn((i+1)*500);
+                $("h1").fadeOut((i+1)*500);
+            }
+              
+        </script>
+    </body>
+</html>

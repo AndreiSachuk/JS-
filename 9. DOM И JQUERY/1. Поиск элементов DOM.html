@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Find item DOM</title>
+    </head>
+
+    <body>
+        <h1 id="main-heading">1. Поиск элементов DOM</h1>   <!-- Идентификация элементов по id-->
+
+        <script>
+            var headingElement = document.getElementById("main-heading");  //Поиск элемента с помощью getElementById
+            console.log(headingElement.innerHTML);  //Когда элемент найден через свойство innerHTML мы можем узнать, что за текст находится внутри элемента
+            var newHeadingText = prompt("Введите новый заголовок:");
+            headingElement.innerHTML = newHeadingText;  //Можем заменит текст элемента 
+
+        </script>
+    </body>
+</html>
