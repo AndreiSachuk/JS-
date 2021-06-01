@@ -1,0 +1,36 @@
+<!--Доработайте упражнение #2: добавьте к двигающемуся элементу h1 обработчик клика, который останавливает анимацию.
+Подсказка: отменить запуск кода по интервалу можно функцией clearInterval.-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Квадрат</title>
+    </head>
+<body>
+    <h1 id="heading">Квадрат</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"> 
+    </script>
+
+    <script>
+        var Offset = 0;
+        var moveHeading = function () {
+            Offset += 5;
+            if (Offset < 200) {
+                $("#heading").offset({ left: Offset });
+            } else if (Offset < 400){
+                $("#heading").offset({ top: (Offset-200) });
+            } else if (Offset < 600){
+                $("#heading").offset({ left: (-Offset+600) });
+            } else if (Offset < 800){
+                $("#heading").offset({ top: (-Offset+800) });
+            } else {Offset = 0;}
+        };
+        setInterval(moveHeading, 10);
+        $("html").click(function(){
+            clearInterval(moveHeading); // остановили объект
+        });
+    </script>
+</body>
+</html> 

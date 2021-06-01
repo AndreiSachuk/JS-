@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Интерактивное программирование</title>
+    </head>
+<body>
+    <h1 id="heading">Привет, мир!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"> 
+    </script>
+
+    <script>
+        var clickHandler = function (event) {   //в аргументе event будет передан объект, содержащий информацию о событии, например о том, в каком месте был сделан клик.
+            console.log("Клик! " + event.pageX + " " + event.pageY);
+        };
+        $("h1").click(clickHandler);    //В случае клика по элементу h1 вызови функцию clickHandler и передай ей объект события». 
+                                        //В данном случае обработчик извлекает из объекта event информацию об x- и y-координатах клика.
+        </script>
+</body>
+</html> 

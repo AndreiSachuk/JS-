@@ -1,0 +1,34 @@
+<!--Используйте setInterval для анимации заголовка h1, двигая его по квадрату, вдоль краев страницы. Пусть он переместится
+на 200 пикселей вправо, на 200 пикселей вниз, 200 пикселей влево, 200 пикселей вверх, а затем начнет с начала. Подсказка:
+нужно запоминать текущее направление (вправо, вниз, влево или вверх), чтобы знать, увеличивать или уменьшать для заго-
+ловка отступы слева (left) и сверху (top). Кроме того, при достижении угла квадрата нужно будет менять направление.-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Квадрат</title>
+    </head>
+<body>
+    <h1 id="heading">Квадрат</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"> 
+    </script>
+
+    <script>
+        var Offset = 0;
+        var moveHeading = function () {
+            Offset += 5;
+            if (Offset < 200) {
+                $("#heading").offset({ left: Offset });
+            } else if (Offset < 400){
+                $("#heading").offset({ top: (Offset-200) });
+            } else if (Offset < 600){
+                $("#heading").offset({ left: (-Offset+600) });
+            } else if (Offset < 800){
+                $("#heading").offset({ top: (-Offset+800) });
+            } else {Offset = 0;}
+        };
+        setInterval(moveHeading, 10);
+    </script>
+</body>
+</html> 

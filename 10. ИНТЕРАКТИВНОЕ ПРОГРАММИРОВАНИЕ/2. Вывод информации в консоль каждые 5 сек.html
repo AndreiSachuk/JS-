@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>setTimeout</title>
+    </head>
+
+    <body>
+        <h1 id="main-heading">1. Отложенное выполнение кода и setTimeout</h1>   
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       
+        <script>
+            var counter = 1;
+            var printMessage = function () {
+                console.log("Ты смотришь в консоль уже " + counter + " сек");
+                counter++;
+            };
+            var intervalId = setInterval(printMessage, 1000);  // выполнять функцию printMessage, каждые 1000 ms
+
+            ///clearInterval(intervalId);  -  остановка та интервала
+                     
+        </script>
+    </body>
+</html>
