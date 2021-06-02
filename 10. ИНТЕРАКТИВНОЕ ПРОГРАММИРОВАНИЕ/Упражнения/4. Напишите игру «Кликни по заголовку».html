@@ -1,0 +1,46 @@
+<!--Доработайте упражнение #3 так, чтобы каждый раз, когда игрок кликает по заголовку, тот не останавливался, а ускорялся и кликнуть 
+по нему становилось сложнее. Отслеживайте количество кликов по заголовку и меняйте его текст, отображая там это
+число. Когда игрок наберет 10 кликов, остановите анимацию, а текст заголовка измените на «Вы победили!».
+Подсказка: чтобы ускорить движение, нужно будет отменить текущий вызов функции по интервалу, а потом задать новый,с меньшим временем повтора.-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Speed</title>
+    </head>
+<body>
+    <h1 id="heading">Кликни по мне 10 раз</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"> 
+    </script>
+
+    <script>
+        var Offset = 0;
+        var k = 1;
+        var moveHeading = function () {
+            Offset += (0.3*k);
+            console.log(Offset);
+            if (Offset < 200) {
+                $("#heading").offset({ left: Offset });
+            } else if (Offset < 400){
+                $("#heading").offset({ top: (Offset-200) });
+            } else if (Offset < 600){
+                $("#heading").offset({ left: (-Offset+600) });
+            } else if (Offset < 800){
+                $("#heading").offset({ top: (-Offset+800) });
+            } else {Offset = 0;}
+        };
+        var dvig = setInterval(moveHeading, k);
+        $("h1").click(function(){
+            $("h1").text("Кликни по мне еще "+(10-k)+" раз!")
+            if (k===10){
+                clearInterval(dvig); // остановили объект
+                $("h1").text("Вы выиграли!")
+                return;
+            }
+            return k++;         
+        });
+    </script>
+</body>
+</html>     

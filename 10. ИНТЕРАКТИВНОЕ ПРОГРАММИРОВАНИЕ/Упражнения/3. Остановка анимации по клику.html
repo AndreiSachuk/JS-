@@ -6,10 +6,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Квадрат</title>
+        <title>STOP</title>
     </head>
 <body>
-    <h1 id="heading">Квадрат</h1>
+    <h1 id="heading">Нажми на меня для остановки</h1>
     <script src="https://code.jquery.com/jquery-2.1.0.js"> 
     </script>
 
@@ -27,9 +27,9 @@
                 $("#heading").offset({ top: (-Offset+800) });
             } else {Offset = 0;}
         };
-        setInterval(moveHeading, 10);
-        $("html").click(function(){
-            clearInterval(moveHeading); // остановили объект
+        var hello = setInterval(moveHeading, 10);
+        $("h1").click(function(event){
+            clearInterval(hello); // остановили объект
         });
     </script>
 </body>
