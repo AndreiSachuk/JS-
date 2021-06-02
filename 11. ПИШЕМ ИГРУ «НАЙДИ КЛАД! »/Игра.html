@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Найди клад!</title>
+</head>
+<body>
+    <h1 id="heading">Найди клад!</h1>
+    <img id="map" width=700 height=700 
+        src="http://nostarch.com/images/treasuremap.png">
+    <p id="distance"></p>
+    <p id="clicks"></p>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+        
+        var getRandomNumber = function () {
+            return Math.floor(Math.random() * 700);
+        };
+
+        var clicks = 0;
+        var x = getRandomNumber();
+        var y = getRandomNumber();
+
+        var getDistance = function (event, x, y) {
+            var diffX = event.offsetX - x;
+            var diffY = event.offsetY - y;
+            return Math.sqrt((diffX * diffX) + (diffY * diffY));
+        };
+
+        var getDistanceHint = function (distance) {
+            if (distance < 15) {
+            return "Обожжешься!";
+            } else if (distance < 30) {
+            return "Очень горячо";
+            } else if (distance < 60) {
+            return "Горячо";
+            } else if (distance < 100) {
+            return "Тепло";
+            } else if (distance < 200) {
+            return "Холодно";
+            } else if (distance < 380) {
+            return "Очень холодно";
+            } else if (distance < 600) {
+            return "Очень-очень холодно";
+            }else {
+            return "Замерзнешь!";
+            }
+        };
+
+
+
+        
+        $("#map").click(function (event) {
+            if (clicks > 24){
+                alert("Вы проиграли");
+            } else {
+            clicks++;
+            var distance = getDistance(event, x,y);
+            var distanceHint = getDistanceHint(distance);
+            $("#clicks").text("Осталось кликов " + (25-clicks));
+            $("#distance").text(distanceHint);
+            if (distance < 8) {
+                alert("Клад найден! Сделано кликов: " + clicks);
+            }    
+        }});
+    </script>
+</body>
+</html>
