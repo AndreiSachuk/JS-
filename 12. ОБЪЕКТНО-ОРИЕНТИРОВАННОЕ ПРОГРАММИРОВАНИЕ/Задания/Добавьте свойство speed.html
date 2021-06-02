@@ -1,0 +1,63 @@
+<!--Есть другой, более объектно-ориентированный подход к рисованию машин — задать для каждого объекта-машины метод отрисовки (назо-
+вем его draw). Тогда вместо drawCar(tesla) можно будет написать tesla.draw(). В объектно-ориентированном программировании при-
+нято, чтобы объекты обладали собственной функциональностью, организованной в виде методов. В нашем случае функция drawCar изна-
+чально предназначена для изображения объектов-машин, поэтому стоит сделать ее частью каждого объекта, а не использовать как отдельную функцию.
+
+Прототипы JavaScript — это механизм, который упрощает использование общей функциональности (то есть методов) разными объек-
+тами. У всех конструкторов есть свойство prototype, к которому можно добавлять методы; любой метод, добавленный к свойству prototype,
+будет доступен всем объектам, которые созданы с помощью этого конструктора.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Гонки. 3. Настройка объектов через прототипы</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+        var Car = function (x, y, speed) {
+            this.x = x;
+            this.y = y;
+            this.speed = speed;
+        };
+
+        Car.prototype.draw = function () {
+            var carHtml = '<img src="http://nostarch.com/images/car.png">';
+
+            this.carElement = $(carHtml);
+
+            this.carElement.css({
+                position: "absolute",
+                left: this.x,
+                top: this.y
+            });
+
+            $("body").append(this.carElement);
+        };
+
+        Car.prototype.moveRight = function () {
+            this.x += this.speed;
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            });
+        };
+
+        var tesla = new Car(20, 20, 3);
+        var nissan = new Car(100, 200, 5);
+
+        tesla.draw();
+        nissan.draw();
+
+        
+        //var moveNissan = setInterval(nissan.moveRight, 100);
+        setInterval(nissan.moveRight.bind(nissan), 10);
+        setInterval(tesla.moveRight.bind(tesla), 10);
+
+    </script>
+</body>
+</html>
+
