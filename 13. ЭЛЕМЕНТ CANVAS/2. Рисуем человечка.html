@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "Red";
+        ctx.fillRect(50, 0, 50, 50);
+        ctx.fillStyle = "Green";
+        ctx.fillRect(70, 50, 10, 20);
+        ctx.fillStyle = "Blue";
+        ctx.fillRect(0, 70, 150, 10);
+        ctx.fillStyle = "Yellow";
+        ctx.fillRect(35, 80, 80, 80);
+        ctx.fillStyle = "SkyBlue";
+        ctx.fillRect(35, 160, 10, 80);
+        ctx.fillStyle = "PaleGreen";
+        ctx.fillRect(105, 160, 10, 80);
+    </script>
+
+</body>
+</html>
