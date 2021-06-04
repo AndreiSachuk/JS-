@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Анимация с canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var position = 0;
+        setInterval(function () {
+            ctx.clearRect(0, 0, 500, 400);
+            ctx.fillRect(position, 0, 20, 20);
+            position++;
+            if (position > 200) {
+                position = 0;
+            }
+        }, 30);
+
+        var size = 0;
+        setInterval(function () {
+            //ctx.clearRect(0, 0, 200, 200);
+            ctx.fillRect(220, 0, size, size);
+            size++;
+            if (size > 200) {
+                size = 0;
+            }
+        }, 10);
+
+
+    </script>
+</body>
+
+</html>
