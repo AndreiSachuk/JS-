@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var circle = function (x, y, radius, bool) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+            if (bool === true) {
+                ctx.fill();
+            } else {
+                ctx.stroke();
+            }
+
+        };
+
+        var snow = function (x, y) {
+            ctx.strokeStyle = "Black";
+            circle(x + 10, y + 80, 40);
+            circle(x + 10, y + 10, 30);
+            ctx.fillStyle = "Black";
+            circle(x + 0, y + 0, 5, true);
+            circle(x + 20, y + 0, 5, true);
+            circle(x + 10, y + 60, 5, true);
+            circle(x + 10, y + 80, 5, true);
+            circle(x + 10, y + 100, 5, true);
+            ctx.fillStyle = "Orange";
+            circle(x + 10, y + 10, 5, true);
+        }
+
+        snow(100,100);
+        snow(200,200);
+        snow(300,300);
+
+
+    </script>
+
+</body>
+
+</html>

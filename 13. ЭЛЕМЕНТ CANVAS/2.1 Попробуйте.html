@@ -11,9 +11,12 @@
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
-        for (var i = 0; i < 8; i++) {
-            ctx.fillRect(i * 10, i * 10, 10, 10);
-        }
+        ctx.fillStyle = "MediumOrchid";
+        ctx.fillRect(0, 0, 50, 100);
+        ctx.fillStyle = "Purple";
+        ctx.fillRect(50, 0, 50, 100);
+        ctx.fillStyle = "Moccasin";
+        ctx.fillRect(100, 0, 50, 100);
     </script>
 
 </body>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.strokeRect(100, 10, 100, 20);  //рисуем пустой прямоугльник
+
+        ctx.strokeStyle = "DeepPink";      //цвет линий
+        ctx.lineWidth = 4;                 //толщина линий
+        ctx.strokeRect(100, 110, 100, 20);
+
+
+        ctx.strokeStyle = "Turquoise";
+        ctx.lineWidth = 4;
+        ctx.beginPath();    // метод рисования нового пути
+        ctx.moveTo(10, 10); // точка начала пути
+        ctx.lineTo(60, 60); // точка окончания пути
+        ctx.moveTo(60, 10);
+        ctx.lineTo(10, 60);
+        ctx.stroke();   // метод для отображения путей на холсте
+
+
+        //Рисуем человечка линиями
+        ctx.strokeStyle = "Black";
+        ctx.lineWidth = 4;
+        ctx.fillStyle = "Blue";  // цвет заливки
+        ctx.beginPath();
+        ctx.moveTo(200, 200);
+        ctx.lineTo(200, 220);
+        ctx.lineTo(220, 220);
+        ctx.lineTo(220, 200);
+        ctx.lineTo(200, 200);
+        ctx.fill();     // ЗАЛИВАЕМ ЗАМКНУТЫЙ КОНТУР
+        ctx.moveTo(210, 220);
+        ctx.lineTo(210, 270);
+        ctx.lineTo(190, 300);
+        ctx.moveTo(210, 270);
+        ctx.lineTo(230, 300);
+        ctx.moveTo(210, 240);
+        ctx.lineTo(190, 220);
+        ctx.moveTo(210, 240);
+        ctx.lineTo(230, 220)
+        ctx.stroke();
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "Green";
+        ctx.beginPath();
+        ctx.arc(50, 50, 20, 0, Math.PI / 2, false);  /*  50/50 - центр   20 - радиус и начинаем рисовать с угла в 0 радиан
+                                                        в качестве последнего аргумента мы указали false — это значит 
+                                                        что рисовать дугу нужно по часовой стрелке. Если вам понадобится рисо-
+                                                        вать против часовой стрелки, передайте последним аргументом true.*/
+        ctx.moveTo(120, 50);
+        ctx.arc(100, 50, 20, 0, Math.PI, false);
+        ctx.moveTo(170, 50);
+        ctx.arc(150, 50, 20, 0, Math.PI * 2, false);
+        ctx.stroke();
+
+
+        var circle = function (x, y, radius, bool) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+            if (bool===true){
+                ctx.fill();
+            } else{
+                ctx.stroke();
+            }
+            
+        };
+
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = "Red";
+        circle(350, 350, 10);
+        ctx.strokeStyle = "Orange";
+        circle(350, 350, 20);
+        ctx.strokeStyle = "Yellow";
+        circle(350, 350, 30);
+        ctx.strokeStyle = "Green";
+        circle(350, 350, 40);
+        ctx.strokeStyle = "Blue";
+        circle(350, 350, 50);
+        ctx.strokeStyle = "Purple";
+        circle(350, 350, 60);
+
+        //Рисуем снеговика
+        ctx.strokeStyle = "Black";
+        circle(50, 200, 40);
+        circle(50, 130, 30);
+        ctx.fillStyle = "Black";
+        circle(40, 120, 5, true);
+        circle(60, 120, 5, true);
+        circle(50, 180, 5, true);
+        circle(50, 200, 5, true);
+        circle(50, 220, 5, true);
+        ctx.fillStyle = "Orange";
+        circle(50, 130, 5, true);
+
+
+
+    </script>
+
+</body>
+
+</html>

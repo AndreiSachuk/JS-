@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var circle = function (x, y, radius, bool) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+            if (bool === true) {
+                ctx.fill();
+            } else {
+                ctx.stroke();
+            }
+
+        };
+
+
+        $("html").mousemove(function (event) {
+            circle(event.pageX, event.pageY, 3)
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
