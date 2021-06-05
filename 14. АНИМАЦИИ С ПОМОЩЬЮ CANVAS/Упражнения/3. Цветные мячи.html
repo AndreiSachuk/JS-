@@ -14,10 +14,17 @@
             this.y = 100;
             this.xSpeed = Math.floor(Math.random() * 10) - 5;
             this.ySpeed = Math.floor(Math.random() * 10) - 5;
+            var colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+            this.color = RandomColor(colors);
         };
 
-        var circle = function (x, y, radius, fillCircle) {
+        var RandomColor = function (colors) {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        var circle = function (x, y, radius, fillCircle, color) {
             ctx.beginPath();
+            ctx.fillStyle = color;
             ctx.arc(x, y, radius, 0, Math.PI * 2, false);
             if (fillCircle) {
                 ctx.fill();
@@ -27,7 +34,7 @@
         };
 
         Ball.prototype.draw = function () {
-            circle(this.x, this.y, 3, true);
+            circle(this.x, this.y, 3, true, this.color);
         };
 
         Ball.prototype.move = function () {
@@ -49,6 +56,9 @@
         var width = canvas.width;
         var height = canvas.height;
         var ctx = canvas.getContext("2d");
+        var colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+
+
 
         var balls = [];
         for (var i = 0; i < 10; i++) {
@@ -64,9 +74,15 @@
                 balls[i].move();
                 balls[i].checkCollision(width, height);
             }
-
+            for (var j = 0; j < 10; j++) {
+                for (var i = 0; i < 10; i++) {
+                    if (balls[j].x === balls[i].x && balls[j].y === balls[i].y && j != i) {
+                        console.log(j + ":" + balls[j].x + " " + balls[j].y + " " + i + ": " + balls[i].x + " " + balls[i].y);
+                        alert("Cтолкнулся " + j + " и " + i + " мячи");
+                    }
+                }
+            }
             ctx.strokeRect(0, 0, width, height);
-
         }, 30);
     </script>
 </body>
